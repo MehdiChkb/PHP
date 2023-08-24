@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Navbar</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+        
+            <a class="logo" href="/">Répar'Service</a>
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="#">Elec'Services</a></li>
+                    <li><a href="#">Plom' Services</a></li>
+                    <li><a href="#">Nos Prestations</a></li>
+                </ul>
+            </nav>
+            <a class="cta" href="./acceuil.html">Rechercher</a>
+            <p class="menu cta">Menu</p>
+        </header>
+
+        <div id="mobile__menu" class="overlay">
+            <a class="close">&times;</a>
+            <div class="overlay__content">
+                <a href="./index.html">Elec'Services</a>
+                <a href="./index.html">Plom' Services</a>
+                <a href="./index.html">Nos Prestations</a>
+            </div>
+        </div>
+
+        <div class="header">
+            <h1>Elec'Services</h1>
+            <p>Travaux d'installation d'équipement électricité SERVICE APRES-VENTE DEPANNAGE 24H/24H</p>
+          
+          <div class="container">
+            <h2 class="bon-intervention-title">BON D'INTERVENTION N°</h2>
+            <form action="traitement.php" method="post">
+            
+            <div class="client-info">
+
+                <div class="left">
+                <label for="client">Nom du client :</label>
+                <input type="text" id="client" name="client" class="input-field" required>
+                <label for="adresse">Adresse :</label>
+                <input type="text" id="adresse" name="adresse" class="input-field" required>
+                <label for="telephone">Téléphone :</label>
+                <input type="tel" id="telephone" name="telephone" class="input-field" required>
+                </div>
+
+                <div class="right">
+                <label for="dateDemande">Date demande :</label>
+                <input type="date" id="dateDemande" name="dateDemande" class="input-field" required>
+                <label for="dateIntervention">Date d'intervention :</label>
+                <input type="date" id="dateIntervention" name="dateIntervention" class="input-field" required>
+                <label for="numDemande">N° Demande :</label>
+                <input type="text" id="numDemande" name="numDemande" class="input-field" required>
+                </div>
+                
+            </div>
+            
+            <div class="intervention-demandee">
+                <label for="interventionDemandee">Intervention demandée par :</label>
+                <input type="text" id="interventionDemandee" name="interventionDemandee" class="input-field" required>
+            </div>
+            
+            <div class="num-chantier">
+                <label for="numChantier">N° de chantier :</label>
+                <input type="text" id="numChantier" name="numChantier" class="input-field" required>
+            </div>
+              
+
+
+              <h2 class="designation-travaux-title">Désignation Travaux</h2>
+                <table class="form-table" id="travauxTable">
+                <thead>
+                    <tr>
+                    <th>DESIGNATION TRAVAUX</th>
+                    <th>Réf. Articles</th>
+                    <th>Quantité</th>
+                    <th>Prix unitaire</th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td><input type="text" class="table-input" name="designationTravaux[]" required></td>
+                    <td><input type="text" class="table-input" name="refArticles[]" required></td>
+                    <td><input type="number" class="table-input" name="quantite[]" required></td>
+                    <td><input type="number" class="table-input" name="prixUnitaire[]" step="0.01" required></td>
+                    <td><button class="buttonSUPPR" type="button" onclick="deleteRow(this)">Supprimer</button></td>
+                    </tr>
+                </tbody>
+                </table>
+                <button type="button" onclick="addRow()">Ajouter une ligne</button>
+
+                <h2 class="main-oeuvre-title">Main d'œuvre</h2>
+                <table class="form-table" id="mainOeuvreTable">
+                <thead>
+                    <tr>
+                    <th>Jour</th>
+                    <th>Technicien</th>
+                    <th>Heures</th>
+                    <th>Forfait déplacement</th>
+                    <th>Observations</th>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <select class="table-input" name="jour[]">
+                        <option value="lundi">Lundi</option>
+                        <option value="mardi">Mardi</option>
+                        <option value="mercredi">Mercredi</option>
+                        <option value="jeudi">Jeudi</option>
+                        <option value="vendredi">Vendredi</option>
+                        <option value="samedi">Samedi</option>
+                        <option value="dimanche">Dimanche</option>
+                      </select>
+                    </td>
+                    <td><input type="text" class="table-input" name="technicien[]" required></td>
+                    <td><input type="number" class="table-input" name="heures[]" required></td>
+                    <td><input type="number" class="table-input" name="forfait[]" required></td>
+                    <td><input type="text" class="table-input" name="observations[]"></td>
+                  </tr>
+                  <!-- Répétez le même modèle pour les autres jours -->
+                </tbody>
+                </table>
+
+                <div class="signatures">
+                    <div class="client-signature">
+                      <p>Signature du client :</p>
+                      <input type="text" class="signature-input" name="clientSignature" required>
+                    </div>
+                    <div class="technicien-signature">
+                      <p>Signature Technicien :</p>
+                      <input type="text" class="signature-input" name="technicienSignature" required>
+                    </div>
+                  </div>
+
+                  <div class="submit-button">
+                    <button type="submit">Valider</button>
+                  </div>
+            </form>
+
+
+
+        <script type="text/javascript" src="./script.js"></script>
+    </body>
+</html>
